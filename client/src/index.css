@@ -1,0 +1,101 @@
+/* Design philosophy: Signal Room — warm paper canvas, deep ink rail, semantic Signal Amber, editorial type, and restrained motion. */
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "DM Serif Display", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-paper: #fbf8f1;
+  --color-card: #fffdf8;
+  --color-ink: #0f2837;
+  --color-signal: #e7a83b;
+  --color-signal-dark: #b87816;
+  --color-sage: #6f9c7e;
+  --color-sage-dark: #3e6651;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --primary: #0f2837;
+  --primary-foreground: #fbf8f1;
+  --background: #fbf8f1;
+  --foreground: #0f2837;
+  --card: #fffdf8;
+  --card-foreground: #0f2837;
+  --popover: #fffdf8;
+  --popover-foreground: #0f2837;
+  --secondary: #f4eddf;
+  --secondary-foreground: #0f2837;
+  --muted: #f0eadf;
+  --muted-foreground: #62727b;
+  --accent: #f4eddf;
+  --accent-foreground: #0f2837;
+  --destructive: #b85b48;
+  --destructive-foreground: #fffdf8;
+  --border: rgba(15, 40, 55, 0.12);
+  --input: rgba(15, 40, 55, 0.14);
+  --ring: #e7a83b;
+  --radius: 0.85rem;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #fbf8f1;
+  color: #0f2837;
+  font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+button, input { font: inherit; }
+button { cursor: pointer; }
+::selection { background: rgba(231, 168, 59, 0.35); color: #0f2837; }
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  button:not(:disabled), [role="button"]:not([aria-disabled="true"]), [type="button"]:not(:disabled), [type="submit"]:not(:disabled), a[href], select:not(:disabled), input[type="checkbox"]:not(:disabled), input[type="radio"]:not(:disabled) { @apply cursor-pointer; }
+}
+
+@layer utilities {
+  .text-signal-dark { color: #b87816; }
+  .text-sage-dark { color: #3e6651; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  button, a { transition: color 180ms cubic-bezier(0.23, 1, 0.32, 1), background-color 180ms cubic-bezier(0.23, 1, 0.32, 1), border-color 180ms cubic-bezier(0.23, 1, 0.32, 1), transform 180ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 180ms cubic-bezier(0.23, 1, 0.32, 1); }
+  button:active { transform: scale(0.985); }
+}
+
+/* Paper grain is intentionally quiet: depth without distracting from the operational canvas. */
+.bg-paper { background-color: #fbf8f1; background-image: radial-gradient(rgba(15,40,55,0.035) 0.6px, transparent 0.6px); background-size: 7px 7px; }
+
+@media (max-width: 640px) {
+  h1 { word-break: normal; }
+}
