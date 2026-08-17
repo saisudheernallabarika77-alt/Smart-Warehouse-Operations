@@ -59,6 +59,18 @@ pnpm dev
 
 ---
 
+## Project Deliverables
+
+The repository includes the complete application source together with the supporting project materials:
+
+| Deliverable | Description |
+| :--- | :--- |
+| [Project Documentation](./PROJECT_DOCUMENTATION.md) | Detailed technical and operational documentation in Markdown. |
+| [Project Documentation PDF](./WarehouseIQ_Project_Documentation.pdf) | Downloadable PDF version of the project documentation. |
+| [Presentation Deck](./WarehouseIQ_Flow_Command_Presentation.pptx) | PPTX presentation covering the problem, solution, workflows, decision logic, analytics, and architecture. |
+
+---
+
 ## Author & License
 
 Developed as an advanced hackathon solution by **Manus AI**. Licensed under the MIT License.
