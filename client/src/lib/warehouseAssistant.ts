@@ -17,6 +17,23 @@ export type AssistantAnswer = {
 
 const normalize = (value: string) => value.toLowerCase().replace(/[?!.:,]/g, " ").replace(/\s+/g, " ").trim();
 
+export function buildWarehouseContext(shift: Shift): string {
+  const workspace = shiftWorkspace[shift];
+  const details = shiftDetails[shift];
+  return JSON.stringify({
+    project: "WarehouseIQ — Smart Warehouse Operations",
+    dataMode: "mock demo data",
+    activeShift: { code: shift, label: details.label, time: details.time },
+    command: workspace.command,
+    orders: workspace.orders,
+    inventory: workspace.inventory,
+    pickAndPack: workspace.pick,
+    dispatch: workspace.dispatch,
+    analytics: workspace.analytics,
+    prediction: workspace.prediction,
+  }, null, 2);
+}
+
 export function getAssistantPrompts(shift: Shift) {
   const workspace = shiftWorkspace[shift];
   return [

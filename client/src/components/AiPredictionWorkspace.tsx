@@ -1,17 +1,19 @@
 import { useEffect, useMemo, useState } from "react";
 import { Shift, View } from "@/types/warehouse";
 import { shiftWorkspace, shiftDetails } from "@/data/warehouseData";
-import { answerWarehouseQuestion, AssistantAnswer, getAssistantPrompts } from "@/lib/warehouseAssistant";
+import { answerWarehouseQuestion, AssistantAnswer, buildWarehouseContext, getAssistantPrompts } from "@/lib/warehouseAssistant";
 import { AlertTriangle, ArrowUpRight, Brain, Check, ChevronRight, Cpu, MessageCircle, RotateCcw, Send, Sparkles, TrendingUp, UserRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
+import { trpc } from "@/lib/trpc";
 
 type ChatMessage = {
   id: string;
   role: "assistant" | "user";
   text: string;
   answer?: AssistantAnswer;
+  source?: "live" | "fallback";
 };
 
 interface AiPredictionWorkspaceProps {
@@ -48,31 +50,46 @@ export function AiPredictionWorkspace({ shift, onResolve, decisionResolved, onNa
   const [typing, setTyping] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([getWelcomeMessage(shift)]);
   const prompts = useMemo(() => getAssistantPrompts(shift), [shift]);
+  const liveAssistant = trpc.ai.ask.useMutation();
 
   useEffect(() => {
     setMessages([getWelcomeMessage(shift)]);
     setQuestion("");
     setTyping(false);
+    liveAssistant.reset();
   }, [shift]);
 
-  const submitQuestion = (value = question) => {
+  const submitQuestion = async (value = question) => {
     const trimmed = value.trim();
     if (!trimmed || typing) return;
-    const answer = answerWarehouseQuestion(trimmed, shift);
+    const fallbackAnswer = answerWarehouseQuestion(trimmed, shift);
+    const history = messages.slice(-8).map(message => ({ role: message.role, content: message.text }));
     const userMessage: ChatMessage = { id: `user-${Date.now()}`, role: "user", text: trimmed };
     setMessages(current => [...current, userMessage]);
     setQuestion("");
     setTyping(true);
-    window.setTimeout(() => {
-      setMessages(current => [...current, { id: `assistant-${Date.now()}`, role: "assistant", text: "Here is the clearest answer from the current WarehouseIQ operating data:", answer }]);
+
+    try {
+      const response = await liveAssistant.mutateAsync({
+        question: trimmed,
+        shift,
+        context: buildWarehouseContext(shift),
+        history,
+      });
+      setMessages(current => [...current, { id: `assistant-${Date.now()}`, role: "assistant", text: response.answer, source: "live" }]);
+    } catch {
+      setMessages(current => [...current, { id: `assistant-${Date.now()}`, role: "assistant", text: "Live AI is unavailable right now. I have answered from the local WarehouseIQ project context instead:", answer: fallbackAnswer, source: "fallback" }]);
+      toast.error("Live AI unavailable", { description: "Using the local WarehouseIQ decision layer instead." });
+    } finally {
       setTyping(false);
-    }, 420);
+    }
   };
 
   const resetChat = () => {
     setMessages([getWelcomeMessage(shift)]);
     setQuestion("");
     setTyping(false);
+    liveAssistant.reset();
   };
 
   const executeAnswerAction = (answer: AssistantAnswer) => {
@@ -110,6 +127,7 @@ export function AiPredictionWorkspace({ shift, onResolve, decisionResolved, onNa
                 {message.role === "assistant" ? <span className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-ink text-signal"><Sparkles className="h-3.5 w-3.5" /></span> : null}
                 <div className={cn("max-w-[88%]", message.role === "user" ? "order-first" : "") }>
                   <div className={cn("rounded-2xl px-4 py-3 text-[11px] leading-relaxed", message.role === "user" ? "rounded-tr-sm bg-signal text-ink" : "rounded-tl-sm bg-[#f7f1e6] text-ink/70")}>{message.text}</div>
+                  {message.source ? <div className="mt-1 px-1 font-mono text-[8px] uppercase tracking-[0.12em] text-ink/35">{message.source === "live" ? "Live AI · secure server context" : "Offline fallback · local project context"}</div> : null}
                   {message.answer ? <div className="mt-2 rounded-2xl border border-ink/10 bg-white/65 p-4">
                     <div className="flex items-start justify-between gap-3"><div className="font-display text-[20px] leading-none">{message.answer.title}</div><span className={cn("mt-1 h-2 w-2 shrink-0 rounded-full", message.answer.tone === "signal" ? "bg-signal" : message.answer.tone === "sage" ? "bg-sage" : "bg-ink/35")} /></div>
                     <p className="mt-2 text-[11px] leading-relaxed text-ink/60">{message.answer.body}</p>
@@ -121,16 +139,16 @@ export function AiPredictionWorkspace({ shift, onResolve, decisionResolved, onNa
               </div>)}
               {typing ? <div className="flex items-center gap-3"><span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink text-signal"><Sparkles className="h-3.5 w-3.5 animate-pulse" /></span><div className="rounded-2xl rounded-tl-sm bg-[#f7f1e6] px-4 py-3 font-mono text-[10px] text-ink/45">Analyzing shift signals…</div></div> : null}
             </div>
-            <form onSubmit={event => { event.preventDefault(); submitQuestion(); }} className="mt-5 flex items-center gap-2 rounded-2xl border border-ink/15 bg-white p-2 focus-within:border-signal/70 focus-within:ring-2 focus-within:ring-signal/15">
+            <form onSubmit={event => { event.preventDefault(); void submitQuestion(); }} className="mt-5 flex items-center gap-2 rounded-2xl border border-ink/15 bg-white p-2 focus-within:border-signal/70 focus-within:ring-2 focus-within:ring-signal/15">
               <MessageCircle className="ml-2 h-4 w-4 shrink-0 text-ink/35" />
               <input value={question} onChange={event => setQuestion(event.target.value)} placeholder="Ask: Which order is at risk?" className="min-w-0 flex-1 bg-transparent px-2 py-2 text-[12px] text-ink outline-none placeholder:text-ink/35" aria-label="Ask WarehouseIQ a question" />
               <Button type="submit" size="sm" disabled={!question.trim() || typing} className="bg-ink text-paper hover:bg-ink/90"><Send className="h-3.5 w-3.5" /></Button>
             </form>
-            <div className="mt-3 flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.16em] text-ink/36"><span className="h-1.5 w-1.5 rounded-full bg-signal" />Demo AI knowledge layer · no external credentials or private data connected</div>
+            <div className="mt-3 flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.16em] text-ink/36"><span className="h-1.5 w-1.5 rounded-full bg-sage" />Live AI via secure server · local project fallback available</div>
           </div>
           <div className="bg-[#eef1e7] p-5 sm:p-6">
             <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-ink/40">Try a question</div>
-            <div className="mt-3 space-y-2">{prompts.map(prompt => <button key={prompt} type="button" onClick={() => submitQuestion(prompt)} className="group flex w-full items-start justify-between gap-3 rounded-xl border border-ink/10 bg-white/55 px-3 py-3 text-left text-[11px] text-ink/65 transition hover:border-signal/45 hover:bg-white"><span>{prompt}</span><ChevronRight className="mt-0.5 h-3.5 w-3.5 shrink-0 text-ink/30 transition group-hover:translate-x-0.5 group-hover:text-signal-dark" /></button>)}</div>
+            <div className="mt-3 space-y-2">{prompts.map(prompt => <button key={prompt} type="button" onClick={() => void submitQuestion(prompt)} disabled={typing} className="group flex w-full items-start justify-between gap-3 rounded-xl border border-ink/10 bg-white/55 px-3 py-3 text-left text-[11px] text-ink/65 transition hover:border-signal/45 hover:bg-white disabled:cursor-not-allowed disabled:opacity-60"><span>{prompt}</span><ChevronRight className="mt-0.5 h-3.5 w-3.5 shrink-0 text-ink/30 transition group-hover:translate-x-0.5 group-hover:text-signal-dark" /></button>)}</div>
             <div className="mt-7 rounded-2xl border border-sage/30 bg-sage/10 p-4"><div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.16em] text-sage-dark"><Check className="h-3.5 w-3.5" />Answer coverage</div><div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-2 text-[10px] text-ink/60"><span>Orders & SLA</span><span>Inventory risk</span><span>Pick routes</span><span>Dispatch timing</span><span>Shift status</span><span>Analytics</span></div></div>
           </div>
         </div>

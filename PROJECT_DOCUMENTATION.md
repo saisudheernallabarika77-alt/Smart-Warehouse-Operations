@@ -57,7 +57,15 @@ The new **AI Prediction** module serves as the primary entry point for warehouse
 4. **1-Click Execution Console:** Allows supervisors to enforce the AI recommendation instantly with immediate toast confirmation and queue synchronization.
 5. **WarehouseIQ Copilot Chat:** A complete text-based assistant is embedded inside the AI Prediction workspace. Users can ask questions such as "Which order is at risk?", "Explain the LUMA-200 stock risk", "What should Shift B do next?", or "Show dispatch status." The assistant responds from the selected shift's project data with a concise explanation, evidence tiles, an operational recommendation, and a link to the relevant workspace.
 
-The chatbot is implemented as a transparent deterministic demo knowledge layer. It is intentionally labeled as demo AI and does not claim to use a live LLM, private warehouse data, authentication, or external backend services.
+The chatbot now uses a secure live AI path through a server-side tRPC procedure backed by the platform's built-in LLM proxy. The selected shift workspace is serialized into the prompt, so the model can answer natural-language questions using the project's current orders, inventory, picking, dispatch, analytics, and prediction context. The provider credential is never shipped to the browser. If the provider is unavailable, the UI falls back to the deterministic WarehouseIQ decision layer and labels the response accordingly.
+
+### 3.1 Live AI integration flow
+1. The user submits a question from the AI Prediction chat bar.
+2. The client sends only the question, selected shift, short chat history, and serialized mock project context through the typed `ai.ask` tRPC mutation.
+3. The server adds a WarehouseIQ system prompt, calls the server-side built-in LLM proxy using `claude-haiku-4-5`, and returns the response text and source metadata.
+4. The client renders the live answer with a `Live AI · secure server context` label. If the call fails, the local project-aware answer engine responds instead with an `Offline fallback · local project context` label.
+
+This is a live AI integration for the WarehouseIQ demo context; it does not imply that the app is connected to a real warehouse WMS, private customer data, or production operational records.
 
 ---
 

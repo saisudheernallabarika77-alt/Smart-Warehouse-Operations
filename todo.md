@@ -46,17 +46,17 @@
 
 ## Button cleanup
 
-- [ ] Audit every visible button and classify working versus non-functional controls.
-- [ ] Remove dead controls and simplify the interface without breaking working flows.
-- [ ] Run checks and verify the cleaned UI on desktop and mobile.
-- [ ] Publish and synchronize the cleaned project.
+- [x] Audit every visible button and classify working versus non-functional controls.
+- [x] Remove dead controls and simplify the interface without breaking working flows.
+- [x] Run checks and verify the cleaned UI on desktop and mobile.
+- [x] Publish and synchronize the cleaned project.
 
 ## Shift-specific interfaces
 
-- [ ] Define distinct Shift A, Shift B, and Shift C workspace data.
-- [ ] Make metrics, tasks, alerts, and workspace messaging change with the selected shift.
-- [ ] Verify all shifts across navigation and responsive layouts.
-- [ ] Publish and synchronize the shift-specific project.
+- [x] Define distinct Shift A, Shift B, and Shift C workspace data.
+- [x] Make metrics, tasks, alerts, and workspace messaging change with the selected shift.
+- [x] Verify all shifts across navigation and responsive layouts.
+- [x] Publish and synchronize the shift-specific project.
 
 ## Final account personalization pass
 
@@ -71,3 +71,9 @@
 - [x] Add chat history, text input, quick prompts, loading state, reset action, and Demo AI notice.
 - [x] Verify answers change with the selected shift and remain readable on desktop and mobile.
 - [x] Update documentation, save a checkpoint, and sync the chatbot changes to GitHub.
+
+## Live AI integration
+- [x] Keep the provider credential server-side and never expose it in client code.
+- [x] Add a typed server procedure for live WarehouseIQ questions.
+- [x] Connect the AI Prediction chat UI to the live procedure with loading and fallback states.
+- [x] Verify live and fallback responses, run tests/build, document the integration, and publish.
