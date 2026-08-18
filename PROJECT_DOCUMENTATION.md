@@ -39,6 +39,7 @@ To ensure clean separation of concerns and maintainability, the codebase is stru
 - `client/src/components/OrderQueueWorkspace.tsx`: Promise-date order queue.
 - `client/src/components/Workspaces.tsx`: Inventory, pick, dispatch, analytics, and drawers.
 - `client/src/components/AppShell.tsx`: Navigation rail, shift switcher, and Sudheer account panel.
+- `client/src/lib/warehouseAssistant.ts`: Deterministic project-aware question answering and evidence generation.
 
 ---
 
@@ -54,6 +55,9 @@ The new **AI Prediction** module serves as the primary entry point for warehouse
    - **Simulated Impact:** Quantifies the outcome (e.g., Eliminates 16:00 carrier delay penalties with zero picker rework).
 3. **End-to-End Simulation Walkthrough:** Summarizes the 4-step fulfillment lifecycle (Order Ingestion → Inventory Allocation → Pick Wave Release → Dispatch Hand-off).
 4. **1-Click Execution Console:** Allows supervisors to enforce the AI recommendation instantly with immediate toast confirmation and queue synchronization.
+5. **WarehouseIQ Copilot Chat:** A complete text-based assistant is embedded inside the AI Prediction workspace. Users can ask questions such as "Which order is at risk?", "Explain the LUMA-200 stock risk", "What should Shift B do next?", or "Show dispatch status." The assistant responds from the selected shift's project data with a concise explanation, evidence tiles, an operational recommendation, and a link to the relevant workspace.
+
+The chatbot is implemented as a transparent deterministic demo knowledge layer. It is intentionally labeled as demo AI and does not claim to use a live LLM, private warehouse data, authentication, or external backend services.
 
 ---
 

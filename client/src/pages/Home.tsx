@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <AppShell view={view} setView={setView} shift={shift} onShiftChange={handleShiftChange}>
       {view === "prediction" && (
-        <AiPredictionWorkspace shift={shift} onResolve={() => setDecisionResolved(true)} decisionResolved={decisionResolved} />
+        <AiPredictionWorkspace shift={shift} onResolve={() => setDecisionResolved(true)} decisionResolved={decisionResolved} onNavigate={setView} />
       )}
       {view === "command" && (
         <CommandDesk setView={setView} shift={shift} decisionResolved={decisionResolved} onResolve={() => setDecisionResolved(true)} onReview={() => setView("orders")} onOpen={setSelectedOrder} />

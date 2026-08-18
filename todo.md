@@ -65,3 +65,9 @@
 - [x] Show role, warehouse, active shift, and demo-session authentication status without implying real backend credentials.
 - [x] Verify the account interaction on desktop and mobile.
 - [x] Save a final checkpoint and synchronize the update to GitHub.
+
+## AI Prediction chatbot enhancement
+- [x] Add project-aware question answering for orders, inventory, shifts, picking, dispatch, analytics, and recommendations.
+- [x] Add chat history, text input, quick prompts, loading state, reset action, and Demo AI notice.
+- [x] Verify answers change with the selected shift and remain readable on desktop and mobile.
+- [x] Update documentation, save a checkpoint, and sync the chatbot changes to GitHub.
