@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Intelligent Order Prioritization</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #F4F6F8; font-family: 'IBM Plex Sans', sans-serif; color: #4A5568; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            padding-top: 60px;
+            padding-left: 80px;
+            padding-right: 80px;
+            background: #F4F6F8;
+            position: relative;
+        }
+        .meta-bracket { font-size: 12px; font-weight: 700; color: #D9381E; letter-spacing: 1px; margin-bottom: 10px; }
+        .slide-title { font-family: 'DM Serif Display', serif; font-size: 48px; color: #002147; margin-bottom: 40px; border-bottom: 1px solid #002147; padding-bottom: 10px; }
+        .content-grid { display: grid; grid-template-columns: 450px 1fr; gap: 60px; }
+        .text-section { border-right: 1px solid #002147; padding-right: 40px; }
+        .point-block { margin-bottom: 40px; }
+        .point-block h3 { font-size: 18px; font-weight: 700; color: #002147; margin-bottom: 12px; text-transform: uppercase; }
+        .point-block p { font-size: 16px; line-height: 1.6; }
+        .queue-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .queue-table th { text-align: left; padding-top: 12px; padding-bottom: 12px; font-size: 11px; font-weight: 700; color: #D9381E; text-transform: uppercase; border-bottom: 1px solid #002147; }
+        .queue-table td { padding-top: 15px; padding-bottom: 15px; font-size: 14px; border-bottom: 1px solid #4A5568; }
+        .status-tag { font-weight: 700; font-size: 12px; padding: 2px 6px; border: 1px solid #4A5568; }
+        .status-urgent { color: #D9381E; border-color: #D9381E; }
+        .chart-box { margin-top: 40px; height: 220px; width: 100%; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="meta-bracket">[ FULFILLMENT LOGIC · 03 ]</div>
+        <h2 class="slide-title">Multi-tier prioritization and promise-date ranking safeguard urgent customer commitments</h2>
+        
+        <div class="content-grid">
+            <div class="text-section">
+                <div class="point-block">
+                    <h3>Dynamic Tiering</h3>
+                    <p>Orders are automatically categorized into Urgent, High, and Standard tiers based on promise dates and carrier cut-offs.</p>
+                </div>
+                <div class="point-block">
+                    <h3>SLA Risk Flagging</h3>
+                    <p>Live indicators highlight potential delivery failures before they impact customers, allowing for proactive intervention.</p>
+                </div>
+                <div class="point-block">
+                    <h3>Contextual Detail</h3>
+                    <p>Interactive drawers provide visibility into item allocations, picking zones, and fulfillment-chain steps for every order.</p>
+                </div>
+                <div class="chart-box">
+                    <canvas id="priorityMixChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="table-section">
+                <div class="meta-bracket">[ ACTIVE PRIORITY QUEUE ]</div>
+                <table class="queue-table">
+                    <thead>
+                        <tr>
+                            <th>Customer / Order</th>
+                            <th>Priority</th>
+                            <th>Units</th>
+                            <th>Cut-off</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nova Retail<br><small>SO-48219</small></td>
+                            <td><span class="status-tag status-urgent">URGENT</span></td>
+                            <td>10</td>
+                            <td>16:00</td>
+                        </tr>
+                        <tr>
+                            <td>Swell & Co.<br><small>SO-48207</small></td>
+                            <td><span class="status-tag">HIGH</span></td>
+                            <td>6</td>
+                            <td>16:30</td>
+                        </tr>
+                        <tr>
+                            <td>Marlowe Market<br><small>SO-48196</small></td>
+                            <td><span class="status-tag">HIGH</span></td>
+                            <td>5</td>
+                            <td>Tomorrow</td>
+                        </tr>
+                        <tr>
+                            <td>Aster House<br><small>SO-48183</small></td>
+                            <td><span class="status-tag">STD</span></td>
+                            <td>2</td>
+                            <td>Tomorrow</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        const ctx = document.getElementById('priorityMixChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Urgent', 'High', 'Standard'],
+                datasets: [{
+                    data: [12, 28, 60],
+                    backgroundColor: ['#D9381E', '#002147', '#4A5568'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { font: { size: 12, family: 'IBM Plex Sans' }, padding: 20 }
+                    }
+                },
+                cutout: '70%'
+            }
+        });
+    </script>
+</body>
+</html>

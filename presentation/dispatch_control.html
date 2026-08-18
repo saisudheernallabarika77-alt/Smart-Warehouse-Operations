@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Outbound Control Control</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #F4F6F8; font-family: 'IBM+Plex+Sans', sans-serif; color: #4A5568; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            padding-top: 60px;
+            padding-left: 80px;
+            padding-right: 80px;
+            background: #F4F6F8;
+            position: relative;
+        }
+        .meta-bracket { font-size: 12px; font-weight: 700; color: #D9381E; letter-spacing: 1px; margin-bottom: 10px; }
+        .slide-title { font-family: 'DM Serif Display', serif; font-size: 48px; color: #002147; margin-bottom: 40px; }
+        .content-grid { display: grid; grid-template-columns: 480px 1fr; gap: 40px; }
+        .dispatch-image { width: 480px; height: 320px; object-fit: cover; border: 1px solid #002147; }
+        .manifest-section { border-top: 1px solid #002147; padding-top: 20px; }
+        .manifest-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+        .manifest-table th { text-align: left; padding-top: 10px; padding-bottom: 10px; font-size: 11px; font-weight: 700; color: #D9381E; text-transform: uppercase; border-bottom: 1px solid #002147; }
+        .manifest-table td { padding-top: 12px; padding-bottom: 12px; font-size: 14px; border-bottom: 1px solid #4A5568; }
+        .status-tag { font-weight: 700; font-size: 12px; text-transform: uppercase; }
+        .metrics-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; border-top: 1px solid #002147; padding-top: 20px; }
+        .metric-item { border-right: 1px solid #4A5568; padding-right: 10px; }
+        .metric-item:last-child { border-right: none; }
+        .metric-label { font-size: 10px; font-weight: 700; color: #D9381E; text-transform: uppercase; margin-bottom: 5px; }
+        .metric-value { font-size: 24px; font-weight: 700; color: #002147; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="meta-bracket">[ OUTBOUND CONTROL · 07 ]</div>
+        <h2 class="slide-title">Integrated dispatch tracking aligns dock bay capacity and quality checks with strict carrier cut-offs</h2>
+        
+        <div class="content-grid">
+            <div class="visual-col">
+                <img src="/home/ubuntu/webdev-static-assets/dispatch-dock-visual.jpg" class="dispatch-image" alt="Dispatch Dock">
+                <div style="padding-top: 20px;">
+                    <p style="font-size: 14px; line-height: 1.6;">Outbound control boards join express, priority, and ground manifests with dock assignments and loading statuses to prevent missed shipping deadlines.</p>
+                </div>
+            </div>
+            
+            <div class="data-col">
+                <div class="manifest-section">
+                    <table class="manifest-table">
+                        <thead>
+                            <tr>
+                                <th>Manifest</th>
+                                <th>Carrier</th>
+                                <th>Dock</th>
+                                <th>Cut-off</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>EXP-2148</td>
+                                <td>Express</td>
+                                <td>D-02</td>
+                                <td>15:30</td>
+                                <td class="status-tag" style="color: #D9381E;">Loading</td>
+                            </tr>
+                            <tr>
+                                <td>PRIO-602</td>
+                                <td>Priority</td>
+                                <td>D-01</td>
+                                <td>16:00</td>
+                                <td class="status-tag" style="color: #002147;">Staged</td>
+                            </tr>
+                            <tr>
+                                <td>GRD-071</td>
+                                <td>Ground</td>
+                                <td>D-03</td>
+                                <td>17:45</td>
+                                <td class="status-tag">Open</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="metrics-row">
+                    <div class="metric-item">
+                        <div class="metric-label">Quality Checks</div>
+                        <div class="metric-value">6 Pending</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Dock Capacity</div>
+                        <div class="metric-value">2 Spaces</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Carrier Confidence</div>
+                        <div class="metric-value">92%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

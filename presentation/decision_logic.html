@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exception → Decision → Resolution</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #F4F6F8; font-family: 'IBM+Plex+Sans', sans-serif; color: #4A5568; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            padding-top: 60px;
+            padding-left: 80px;
+            padding-right: 80px;
+            background: #F4F6F8;
+        }
+        .meta-bracket { font-size: 12px; font-weight: 700; color: #D9381E; letter-spacing: 1px; margin-bottom: 10px; }
+        .slide-title { font-family: 'DM Serif Display', serif; font-size: 48px; color: #002147; margin-bottom: 40px; }
+        .logic-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; }
+        .flow-container { border-top: 1px solid #002147; padding-top: 20px; }
+        .flow-step { border-bottom: 1px solid #4A5568; padding-top: 20px; padding-bottom: 20px; display: flex; align-items: flex-start; }
+        .step-num { font-size: 12px; font-weight: 700; color: #D9381E; width: 40px; }
+        .step-content h3 { font-size: 18px; font-weight: 700; color: #002147; margin-bottom: 5px; text-transform: uppercase; }
+        .step-content p { font-size: 15px; line-height: 1.4; }
+        .case-study { background: #E2E8F0; border: 1px solid #002147; padding: 30px; }
+        .case-study h4 { font-size: 14px; font-weight: 700; color: #D9381E; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .case-study p { font-size: 14px; line-height: 1.6; font-style: italic; margin-bottom: 20px; }
+        .audit-log { font-family: monospace; font-size: 12px; color: #002147; border-top: 1px solid #002147; padding-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="meta-bracket">[ OPERATIONAL LOGIC · 04 ]</div>
+        <h2 class="slide-title">Proactive split-allocation logic transforms inventory exceptions into guided operator resolutions</h2>
+        
+        <div class="logic-grid">
+            <div class="flow-container">
+                <div class="flow-step">
+                    <div class="step-num">01</div>
+                    <div class="step-content">
+                        <h3>Detection</h3>
+                        <p>Identifies stock deficits and flags SLA risks before they impact the floor rhythm.</p>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <div class="step-num">02</div>
+                    <div class="step-content">
+                        <h3>Analysis</h3>
+                        <p>Evaluates inbound replenishment and lower-priority reservations for potential re-allocation.</p>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <div class="step-num">03</div>
+                    <div class="step-content">
+                        <h3>Resolution</h3>
+                        <p>Proposes split-allocation recommendations to protect urgent carrier cut-offs.</p>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <div class="step-num">04</div>
+                    <div class="step-content">
+                        <h3>Action</h3>
+                        <p>Updates allocation state and logs the audit trail instantly upon lead approval.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="case-study">
+                <h4>[ CASE STUDY: SO-48219 ]</h4>
+                <p>"Nova Retail required 10 units of LUMA-200 with only 7 available. The system proposed allocating 7 immediate units, linking 3 from an inbound delivery, and shifting a lower-priority reservation."</p>
+                <div class="audit-log">
+                    [14:32] EXCEPTION DETECTED<br>
+                    [14:33] SPLIT PROPOSED<br>
+                    [14:35] LEAD APPROVED<br>
+                    [14:35] WAVE RELEASED
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

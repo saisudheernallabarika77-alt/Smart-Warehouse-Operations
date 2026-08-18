@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Floor Execution Optimization</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #F4F6F8; font-family: 'IBM+Plex+Sans', sans-serif; color: #4A5568; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            padding-top: 60px;
+            padding-left: 80px;
+            padding-right: 80px;
+            background: #F4F6F8;
+        }
+        .meta-bracket { font-size: 12px; font-weight: 700; color: #D9381E; letter-spacing: 1px; margin-bottom: 10px; }
+        .slide-title { font-family: 'DM Serif Display', serif; font-size: 48px; color: #002147; margin-bottom: 40px; }
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        .text-block { border-top: 1px solid #002147; padding-top: 20px; }
+        .key-point { margin-bottom: 30px; }
+        .key-point h3 { font-size: 18px; font-weight: 700; color: #002147; margin-bottom: 8px; text-transform: uppercase; }
+        .key-point p { font-size: 16px; line-height: 1.5; }
+        .manifest-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .manifest-table th { text-align: left; padding-top: 10px; padding-bottom: 10px; font-size: 12px; font-weight: 700; color: #D9381E; text-transform: uppercase; border-bottom: 1px solid #002147; }
+        .manifest-table td { padding-top: 12px; padding-bottom: 12px; font-size: 14px; border-bottom: 1px solid #4A5568; }
+        .route-image { width: 540px; height: 400px; object-fit: cover; border: 1px solid #002147; }
+        .image-caption { font-size: 12px; font-weight: 700; color: #4A5568; margin-top: 10px; text-transform: uppercase; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="meta-bracket">[ FLOOR EXECUTION · 05 ]</div>
+        <h2 class="slide-title">Zone-based picking sequences eliminate duplicate aisle travel</h2>
+        
+        <div class="content-grid">
+            <div class="text-block">
+                <div class="key-point">
+                    <h3>Optimized Sequencing</h3>
+                    <p>Floor execution routes sequence items by zone and carrier cut-off to keep warehouse walkers highly productive.</p>
+                </div>
+                <div class="key-point">
+                    <h3>Travel Distance Reduction</h3>
+                    <p>Recommended pick waves bundle urgent allocations with nearby orders, removing 126 meters of duplicate travel per run.</p>
+                </div>
+                
+                <table class="manifest-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Wave W-26</th>
+                            <th>Standard</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Travel Distance</td>
+                            <td>412m</td>
+                            <td>538m</td>
+                        </tr>
+                        <tr>
+                            <td>Pick Velocity</td>
+                            <td>84 units/hr</td>
+                            <td>62 units/hr</td>
+                        </tr>
+                        <tr>
+                            <td>Zone Density</td>
+                            <td>High (A/C)</td>
+                            <td>Fragmented</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="visual-block">
+                <img src="/home/ubuntu/webdev-static-assets/pick-route-visual.jpg" class="route-image" alt="Pick Route Visualization">
+                <div class="image-caption">[ FIG 05.1: ISOMETRIC ROUTE MAPPING · ZONE A ]</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

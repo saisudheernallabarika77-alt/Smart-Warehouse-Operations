@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Architecture & Design System</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #F4F6F8; font-family: 'IBM Plex Sans', sans-serif; color: #4A5568; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            padding-top: 60px;
+            padding-left: 80px;
+            padding-right: 80px;
+            background: #F4F6F8;
+            position: relative;
+        }
+        .meta-bracket { font-size: 12px; font-weight: 700; color: #D9381E; letter-spacing: 1px; margin-bottom: 10px; }
+        .slide-title { font-family: 'DM Serif Display', serif; font-size: 48px; color: #002147; margin-bottom: 60px; border-bottom: 1px solid #002147; padding-bottom: 10px; }
+        
+        .tech-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 60px; }
+        .tech-col { border-top: 1px solid #002147; padding-top: 20px; }
+        .tech-col h3 { font-size: 18px; font-weight: 700; color: #002147; margin-bottom: 20px; text-transform: uppercase; }
+        
+        .stack-list { list-style: none; }
+        .stack-item { border-bottom: 1px solid #4A5568; padding-top: 12px; padding-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+        .stack-item:last-child { border-bottom: none; }
+        .stack-label { font-size: 14px; font-weight: 700; color: #4A5568; }
+        .stack-val { font-size: 14px; color: #002147; font-family: monospace; }
+
+        .design-principle { margin-bottom: 25px; }
+        .design-principle span { font-size: 12px; font-weight: 700; color: #D9381E; display: block; margin-bottom: 4px; }
+        .design-principle p { font-size: 15px; line-height: 1.4; }
+
+        .brand-mark { width: 120px; height: 120px; border: 1px solid #002147; padding: 20px; margin-bottom: 30px; background: #FFFFFF; }
+        .brand-mark img { width: 80px; height: 80px; object-fit: contain; }
+        
+        .footer-info { margin-top: 40px; border-top: 1px solid #002147; padding-top: 20px; font-size: 12px; color: #4A5568; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="meta-bracket">[ SYSTEM ARCHITECTURE · 09 ]</div>
+        <h2 class="slide-title">A robust modern tech stack delivers high-performance reliability with an editorial signal-room aesthetic</h2>
+        
+        <div class="tech-grid">
+            <div class="tech-col">
+                <h3>Core Stack</h3>
+                <div class="stack-list">
+                    <div class="stack-item">
+                        <span class="stack-label">Framework</span>
+                        <span class="stack-val">React 19</span>
+                    </div>
+                    <div class="stack-item">
+                        <span class="stack-label">Language</span>
+                        <span class="stack-val">TypeScript</span>
+                    </div>
+                    <div class="stack-item">
+                        <span class="stack-label">Styling</span>
+                        <span class="stack-val">Tailwind 4</span>
+                    </div>
+                    <div class="stack-item">
+                        <span class="stack-label">Primitives</span>
+                        <span class="stack-val">shadcn/ui</span>
+                    </div>
+                    <div class="stack-item">
+                        <span class="stack-label">Charts</span>
+                        <span class="stack-val">Recharts</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tech-col">
+                <h3>Design Ethos</h3>
+                <div class="design-principle">
+                    <span>Signal Room Aesthetic</span>
+                    <p>Warm paper surfaces and deep ink rails evoke traditional logistics ledgers.</p>
+                </div>
+                <div class="design-principle">
+                    <span>Editorial Hierarchy</span>
+                    <p>DM Serif Display headers provide authoritative clarity for shift leads.</p>
+                </div>
+                <div class="design-principle">
+                    <span>Semantic Amber</span>
+                    <p>Color is reserved strictly for operational exceptions and SLA risks.</p>
+                </div>
+            </div>
+            
+            <div class="tech-col">
+                <h3>Brand Identity</h3>
+                <div class="brand-mark">
+                    <img src="/home/ubuntu/webdev-static-assets/warehouseiq-route-mark.png" alt="WarehouseIQ Mark">
+                </div>
+                <div class="design-principle">
+                    <span>WarehouseIQ Flow Command</span>
+                    <p>Intelligent fulfillment architecture for modern warehouse operations.</p>
+                </div>
+                <div class="footer-info">
+                    [ AUTHOR: MANUS AI ]<br>
+                    [ LICENSE: MIT ]<br>
+                    [ REPO: Smart-Warehouse-Operations ]
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

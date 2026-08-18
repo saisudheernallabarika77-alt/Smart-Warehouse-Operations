@@ -1,0 +1,111 @@
+{
+  "project_info": {
+    "title": "WarehouseIQ — Flow Command",
+    "created": 1786988604.763,
+    "last_updated": 1786988728.18,
+    "total_slides": 9
+  },
+  "slides": [
+    {
+      "id": "title_slide",
+      "state": "edited",
+      "pageNum": 1
+    },
+    {
+      "id": "problem_statement",
+      "state": "edited",
+      "pageNum": 2
+    },
+    {
+      "id": "solution_overview",
+      "state": "edited",
+      "pageNum": 3
+    },
+    {
+      "id": "order_prioritization",
+      "state": "edited",
+      "pageNum": 4
+    },
+    {
+      "id": "decision_logic",
+      "state": "edited",
+      "pageNum": 5
+    },
+    {
+      "id": "pick_pack_optimization",
+      "state": "edited",
+      "pageNum": 6
+    },
+    {
+      "id": "dispatch_control",
+      "state": "edited",
+      "pageNum": 7
+    },
+    {
+      "id": "operational_intelligence",
+      "state": "edited",
+      "pageNum": 8
+    },
+    {
+      "id": "tech_stack_design",
+      "state": "edited",
+      "pageNum": 9
+    }
+  ],
+  "outline": [
+    {
+      "id": "title_slide",
+      "title": "WarehouseIQ — Flow Command",
+      "summary": "Intelligent fulfillment architecture replaces passive warehouse tracking with proactive operational decisions.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "problem_statement",
+      "title": "The Fulfillment Bottleneck",
+      "summary": "Fragmented inventory visibility and priority clashes cause costly SLA breaches and missed carrier cut-offs.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "solution_overview",
+      "title": "Protect the Promise",
+      "summary": "WarehouseIQ establishes a unified control room that protects shift promises and optimizes floor execution.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "order_prioritization",
+      "title": "Intelligent Order Prioritization",
+      "summary": "Multi-tier prioritization and promise-date ranking safeguard urgent customer commitments.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "decision_logic",
+      "title": "Exception → Decision → Resolution",
+      "summary": "Proactive split-allocation logic transforms inventory exceptions into guided operator resolutions.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "pick_pack_optimization",
+      "title": "Floor Execution Optimization",
+      "summary": "Zone-based picking sequences eliminate duplicate aisle travel and accelerate picker productivity.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "dispatch_control",
+      "title": "Outbound Control Control",
+      "summary": "Integrated dispatch tracking aligns dock bay capacity and quality checks with strict carrier cut-offs.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "operational_intelligence",
+      "title": "Flow Analysis & Intelligence",
+      "summary": "Actionable operational intelligence isolates recoverable minutes and measures true throughput.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "tech_stack_design",
+      "title": "Architecture & Design System",
+      "summary": "A robust modern tech stack delivers high-performance reliability with an editorial signal-room aesthetic.",
+      "image_plan": "Use a suitable image if needed"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Protect the Promise</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #F4F6F8; font-family: 'IBM+Plex+Sans', sans-serif; color: #4A5568; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            padding-top: 60px;
+            padding-left: 80px;
+            padding-right: 80px;
+            background: #F4F6F8;
+        }
+        .meta-bracket { font-size: 12px; font-weight: 700; color: #D9381E; letter-spacing: 1px; margin-bottom: 10px; }
+        .slide-title { font-family: 'DM Serif Display', serif; font-size: 48px; color: #002147; margin-bottom: 40px; }
+        .hero-image { width: 1120px; height: 300px; object-fit: cover; border: 1px solid #002147; margin-bottom: 40px; }
+        .feature-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; border-top: 1px solid #002147; padding-top: 20px; }
+        .feature-col { border-right: 1px solid #4A5568; padding-right: 20px; }
+        .feature-col:last-child { border-right: none; }
+        .feature-col h3 { font-size: 16px; font-weight: 700; color: #002147; margin-bottom: 10px; text-transform: uppercase; }
+        .feature-col p { font-size: 14px; line-height: 1.5; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="meta-bracket">[ SOLUTION ARCHITECTURE · 02 ]</div>
+        <h2 class="slide-title">WarehouseIQ establishes a unified control room that protects shift promises</h2>
+        
+        <img src="/home/ubuntu/webdev-static-assets/warehouse-floor-hero.jpg" class="hero-image" alt="Warehouse Floor Hero">
+        
+        <div class="feature-grid">
+            <div class="feature-col">
+                <h3>Control Room Visibility</h3>
+                <p>Instant visibility into active orders, pick accuracy, floor capacity, and bottleneck recovery time from a single desk.</p>
+            </div>
+            <div class="feature-col">
+                <h3>Persistent Operations Rail</h3>
+                <p>Anchor shift tracking, facility location, and lead profile management across every operational module.</p>
+            </div>
+            <div class="feature-col">
+                <h3>Live Telemetry</h3>
+                <p>Connect executive metrics directly to floor-level task execution without unnecessary tab switching or data silos.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
