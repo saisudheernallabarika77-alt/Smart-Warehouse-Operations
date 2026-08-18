@@ -1,0 +1,84 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Prediction & Decision Intelligence</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #F4F6F8; font-family: 'IBM Plex Sans', sans-serif; color: #4A5568; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            padding-top: 50px;
+            padding-left: 80px;
+            padding-right: 80px;
+            background: #F4F6F8;
+            position: relative;
+        }
+        .meta-bracket { font-size: 12px; font-weight: 700; color: #D9381E; letter-spacing: 1px; margin-bottom: 10px; }
+        .slide-title { font-family: 'DM Serif Display', serif; font-size: 40px; color: #002147; margin-bottom: 30px; line-height: 1.2; }
+        
+        .grid-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; border-top: 1px solid #002147; padding-top: 25px; }
+        
+        .card { background: #FFFFFF; border: 1px solid #002147; padding: 25px; }
+        .card h3 { font-size: 16px; font-weight: 700; color: #002147; margin-bottom: 15px; text-transform: uppercase; }
+        
+        .chat-preview { background: #0F2837; color: #FBF8F1; padding: 20px; border-radius: 4px; font-size: 13px; line-height: 1.5; }
+        .chat-bubble-user { background: #E7A83B; color: #0F2837; padding: 10px 14px; border-radius: 8px; margin-bottom: 12px; font-weight: 700; width: fit-content; margin-left: auto; }
+        .chat-bubble-ai { background: #1B3B4B; color: #FBF8F1; padding: 12px 16px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid #E7A83B; }
+        
+        .feature-list { list-style: none; }
+        .feature-list li { margin-bottom: 14px; font-size: 14px; line-height: 1.4; position: relative; padding-left: 20px; }
+        .feature-list li::before { content: "▪"; color: #D9381E; position: absolute; left: 0; font-weight: bold; }
+        
+        .metric-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 25px; }
+        .metric-box { background: #FFFFFF; border: 1px solid #4A5568; padding: 15px; text-align: center; }
+        .metric-box span { font-family: 'DM Serif Display', serif; font-size: 24px; color: #002147; display: block; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="meta-bracket">[ AI PREDICTION & COPILOT · 09 ]</div>
+        <h2 class="slide-title">Executive AI Prediction Copilot with secure server-side LLM proxy & fallback</h2>
+        
+        <div class="grid-layout">
+            <div class="card">
+                <h3>WarehouseIQ Copilot Chat Interface</h3>
+                <div class="chat-preview">
+                    <div class="chat-bubble-user">What should Shift B do next?</div>
+                    <div class="chat-bubble-ai">
+                        <strong>Live AI Recommendation (Confidence 98.7%):</strong><br>
+                        1. Approve immediate 7 units allocation for Nova Retail.<br>
+                        2. Monitor incoming 3 units replenishment at 14:20.<br>
+                        3. Clear QC queue bottleneck to protect 16:00 cutoff.
+                    </div>
+                </div>
+                <div class="metric-row">
+                    <div class="metric-box">
+                        <p style="font-size:11px; text-transform:uppercase;">Confidence</p>
+                        <span>98.7%</span>
+                    </div>
+                    <div class="metric-box">
+                        <p style="font-size:11px; text-transform:uppercase;">Source</p>
+                        <span>Secure API</span>
+                    </div>
+                    <div class="metric-box">
+                        <p style="font-size:11px; text-transform:uppercase;">Fallback</p>
+                        <span>Deterministic</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>Architecture & Security Highlights</h3>
+                <ul class="feature-list">
+                    <li><strong>Server-Side Proxy:</strong> API credentials and model keys remain completely server-side via tRPC `ai.ask` procedure.</li>
+                    <li><strong>Shift Serialization:</strong> Active shift orders, inventory radar, pick waves, and dispatch cutoffs serialize into the AI prompt automatically.</li>
+                    <li><strong>Robust Fallback:</strong> If the external LLM is offline, the system instantly engages local deterministic decision logic with clear UI labeling.</li>
+                    <li><strong>Mentors' Vision:</strong> Gives reviewers instant executive clarity without requiring manual navigation across multiple tabs.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

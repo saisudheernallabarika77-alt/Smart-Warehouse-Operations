@@ -83,3 +83,8 @@
 - [x] Sync the latest project code, documentation, tests, and configuration into the repository.
 - [x] Commit and push the update to the main branch.
 - [x] Verify the remote commit and report the repository link.
+
+## Documentation and PPTX verification
+- [ ] Inspect existing documentation and slide assets in the repository.
+- [ ] Ensure the presentation reflects the AI Prediction chatbot and secure server-side AI integration.
+- [ ] Re-export or update deliverables as needed and commit/push to GitHub main.
