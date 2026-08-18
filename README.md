@@ -1,3 +1,4 @@
+https://smartwhouse-nwqedban.manus.space/
 # WarehouseIQ — Flow Command
 ## Smart Warehouse Operations & Order Fulfillment System
 
